@@ -1,5 +1,5 @@
 <script>
-  import FeedbackItem from './FeedbackItem.svelte';
+  import FeedbackItem from '../molecules/FeedbackItem.svelte';
   export let feedback = [];
 </script>
 
