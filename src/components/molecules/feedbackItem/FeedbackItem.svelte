@@ -1,6 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte'
-  import Card from '../atoms/card/Card.svelte'
+  import Card from '../../atoms/card/Card.svelte'
   export let item
 
   const dispatch = createEventDispatcher()
