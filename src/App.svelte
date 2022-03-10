@@ -1,44 +1,27 @@
 <script>
   import FeedbackList from './components/organisms/feedbackList/FeedbackList.svelte';
-  import FeedbackStats from './components/molecules/feedbackStat/FeedbackStats.svelte';
+  import FeedbackStats from './components/molecules/feedbackStats/FeedbackStats.svelte';
   import FeedbackForm from './components/organisms/feedbackForm/FeedbackForm.svelte';
+  // Updating Feedback array without using store
+  // const deleteFeedback = (e) => {
+  //   const itemId = e.detail
+  //   feedback = feedback.filter((item) => item.id != itemId)
+  // }
 
-  $: feedback = [
-    {
-      id: 1,
-      rating: 10,
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-    },
-    {
-      id: 2,
-      rating: 9,
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-    },
-    {
-      id: 3,
-      rating: 8,
-      text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-    },
-  ];
+  // const addFeedback = (e) => {
+  //   const newFeedback = e.detail
+  //   feedback = [newFeedback, ...feedback]
+  // }
 
-  $: count = feedback.length
-  $: average = feedback.reduce((a, {rating}) => a + rating, 0) / feedback.length
-
-  const deleteFeedback = (e) => {
-    const itemId = e.detail
-    feedback = feedback.filter((item) => item.id != itemId)
-  }
-
-  const addFeedback = (e) => {
-    const newFeedback = e.detail
-    feedback = [newFeedback, ...feedback]
-  }
+  // <FeedbackForm on:add-new-feedback={addFeedback}/>
+  // <FeedbackStats {count} {average}/>
+  // <FeedbackList on:delete-feedback={deleteFeedback}/>
 </script>
 
 <main class="container">
-  <FeedbackForm on:add-new-feedback={addFeedback}/>
-  <FeedbackStats {count} {average}/>
-  <FeedbackList {feedback} on:delete-feedback={deleteFeedback}/>
+  <FeedbackForm/>
+  <FeedbackStats/>
+  <FeedbackList/>
 </main>
 
 <style>

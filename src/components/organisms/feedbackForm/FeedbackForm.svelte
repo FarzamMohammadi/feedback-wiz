@@ -1,9 +1,10 @@
 <script>
+    import { FeedbackStore } from '../../../stores'
     import { v4 as uuidv4 } from 'uuid';
     import {createEventDispatcher} from 'svelte' 
     import Button from '../../atoms/button/Button.svelte'
     import Card from '../../atoms/card/Card.svelte'
-    import RatingSelect from '../../RatingSelect.svelte'
+    import RatingSelect from '../../molecules/ratingSelect/RatingSelect.svelte'
 
     let dispatch = createEventDispatcher()
     let text = ''
@@ -31,7 +32,9 @@
           text,
           rating: +rating
         }
-        dispatch('add-new-feedback', newFeedback)
+        FeedbackStore.update((currentFeedback) => {
+          return [newFeedback, ...currentFeedback]
+        })
         text = ''
       }
     }
