@@ -3,7 +3,7 @@
   import FeedbackStats from './components/molecules/feedbackStat/FeedbackStats.svelte';
   import FeedbackForm from './components/organisms/feedbackForm/FeedbackForm.svelte';
 
-  let feedback = [
+  $: feedback = [
     {
       id: 1,
       rating: 10,
@@ -28,10 +28,15 @@
     const itemId = e.detail
     feedback = feedback.filter((item) => item.id != itemId)
   }
+
+  const addFeedback = (e) => {
+    const newFeedback = e.detail
+    feedback = [newFeedback, ...feedback]
+  }
 </script>
 
 <main class="container">
-  <FeedbackForm />
+  <FeedbackForm on:add-new-feedback={addFeedback}/>
   <FeedbackStats {count} {average}/>
   <FeedbackList {feedback} on:delete-feedback={deleteFeedback}/>
 </main>
